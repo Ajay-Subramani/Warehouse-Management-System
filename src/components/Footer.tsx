@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t border-slate-700 text-center text-slate-400 text-sm">
-          © 2024 Smart Warehouse Digital Twin. All rights reserved.
+          © 2026 Smart Warehouse Digital Twin. All rights reserved.
         </div>
       </div>
     </footer>
