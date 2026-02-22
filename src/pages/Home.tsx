@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { Warehouse, MapPin, Package, Video, Camera } from 'lucide-react';
+import cam1 from '../image/cam1.jpg';
+import cam2 from '../image/cam2.jpg';
+import cam3 from '../image/cam3.jpg';
+import cam4 from '../image/cam4.jpg';
+import cam5 from '../image/cam5.jpg';
+import cam6 from '../image/cam6.jpg';
 
 interface WarehouseInfo {
   name: string;
@@ -19,6 +25,14 @@ interface CameraData {
   video_url: string;
   status: string;
 }
+const cameraImages: Record<string, string> = {
+  'CAM-001': cam1,
+  'CAM-002': cam2,
+  'CAM-003': cam3,
+  'CAM-004': cam4,
+  'CAM-005': cam5,
+  'CAM-006': cam6,
+};
 
 export default function Home() {
   const [warehouseInfo, setWarehouseInfo] = useState<WarehouseInfo | null>(null);
@@ -142,11 +156,18 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="mb-4">
-                <div className="bg-slate-800 rounded aspect-video flex items-center justify-center">
-                  <Camera className="text-slate-600" size={48} />
-                </div>
-              </div>
+             <div className="mb-4">
+      <div className="relative bg-slate-800 rounded aspect-video overflow-hidden">
+        <img
+          src={cameraImages[camera.camera_id]}
+          alt={camera.name}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded animate-pulse">
+          LIVE
+        </div>
+      </div>
+    </div>
 
               <div className="flex items-center justify-between text-sm mb-3">
                 <span className="text-slate-400">Zone: {camera.zone}</span>
